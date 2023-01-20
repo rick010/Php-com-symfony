@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conta index{% endblock %}
+
+{% block body %}
+    <h1>Conta index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumeroConta</th>
+                <th>Saldo</th>
+                <th>Status</th>
+                <th>DataCriacao</th>
+                <th>DataCacelamento</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contum in contas %}
+            <tr>
+                <td>{{ contum.id }}</td>
+                <td>{{ contum.numeroConta }}</td>
+                <td>{{ contum.saldo }}</td>
+                <td>{{ contum.status ? 'Yes' : 'No' }}</td>
+                <td>{{ contum.dataCriacao ? contum.dataCriacao|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ contum.dataCacelamento ? contum.dataCacelamento|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_conta_show', {'id': contum.id}) }}">show</a>
+                    <a href="{{ path('app_conta_edit', {'id': contum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_conta_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agencia{% endblock %}
+
+{% block body %}
+    <h1>Agencia</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agencium.id }}</td>
+            </tr>
+            <tr>
+                <th>NumeroAgencia</th>
+                <td>{{ agencium.numeroAgencia }}</td>
+            </tr>
+            <tr>
+                <th>Endereco</th>
+                <td>{{ agencium.endereco }}</td>
+            </tr>
+            <tr>
+                <th>NumeroEndereco</th>
+                <td>{{ agencium.numeroEndereco }}</td>
+            </tr>
+            <tr>
+                <th>Cep</th>
+                <td>{{ agencium.cep }}</td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td>{{ agencium.bairro }}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ agencium.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ agencium.estado }}</td>
+            </tr>
+            <tr>
+                <th>DataCriacao</th>
+                <td>{{ agencium.dataCriacao ? agencium.dataCriacao|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_agencia_index') }}">back to list</a>
+
+    <a href="{{ path('app_agencia_edit', {'id': agencium.id}) }}">edit</a>
+
+    {{ include('agencia/_delete_form.html.twig') }}
+{% endblock %}
